@@ -1,18 +1,12 @@
 public class Main {
     public static void main(String[] args) {
-        int credit_amount = 1_000_000;
-        float interest_rate = 9.99f;
-        int credit_term = 12;
 
-        float i = interest_rate / 12 / 100;
-        i = 0.008325f;
-        float i_and_1 = i + 1;
-        i_and_1 = 1.008325f;
-        System.out.printf(String.valueOf(Math.pow(i_and_1, credit_term)));
-
-        float magnitude = 1.1046032608567087f;
-
-        int annuity_payment = (int) (credit_amount * ((i * magnitude) / (magnitude - 1)));
-        System.out.println(annuity_payment);
+        CreditPaymentService service = new CreditPaymentService();
+        int annuityPayment12Months = service.calculate(1_000_000, 9.99f, 12);
+        System.out.println(annuityPayment12Months);
+        int annuityPayment24Months = service.calculate(1_000_000, 9.99f, 24);
+        System.out.println(annuityPayment24Months);
+        int annuityPayment36Months = service.calculate(1_000_000, 9.99f, 36);
+        System.out.println(annuityPayment36Months);
     }
 }
